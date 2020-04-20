@@ -25,23 +25,31 @@ request_post:
   defaults: { _controller: AppBundle:Default:requestPost }
   methods: [POST]
 
+#http://127.0.0.1:8000/rest
 calculator_rest:
-    path: /rest/{param1}/
-    defaults: { _controller: AppBundle:Calculator:substract }
-    methods: [GET]
-    requirements:
-      param1: '\d+'
+    path: /rest
+    defaults: { _controller: AppBundle:Substract:substract }
+    methods: [POST]
 
+#http://127.0.0.1:8000/add/2/2
 calculator_add:
   path: /add/{param1}/{param2}/
-  defaults: { _controller: AppBundle:Calculator:add }
+  defaults: { _controller: AppBundle:Add:add }
   methods: [GET]
   requirements:
     param1: '\d+'
     param2: '\d+'
 
-
+#http://127.0.0.1:8000/multiply?param1=2&param2=2
 calculator_mul:
-    path: /multiply/{param1}
-    defaults: { _controller: AppBundle:Calculator:multiply }
+    path: /multiply
+    defaults: { _controller: AppBundle:Multiply:multiply }
     methods: [GET]
+
+#http://127.0.0.1:8000/divide/2?param2=2
+calculator_div:
+    path: /divide/{param1}
+    defaults: { _controller: AppBundle:Divide:divide }
+    methods: [GET]
+    requirements:
+      param1: '\d+'
